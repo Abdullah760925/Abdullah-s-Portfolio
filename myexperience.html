@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Experience - Abdullah's Portfolio</title>
+  <!-- Chart.js for experience visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f39c12' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'/></svg>">
+
+  <!-- Optional Font (Poppins) -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #1a1a1a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo a {
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: 0.3s;
+    }
+    .logo a span {
+      color: #f39c12;
+    }
+    .logo a:hover {
+      transform: scale(1.1);
+      color: #f39c12;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      color: #f39c12;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: #1a1a1a;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+    /* Experience Section */
+    .experience-section {
+      padding: 120px 20px 50px; /* extra top padding for fixed navbar */
+      text-align: center;
+    }
+    .experience-section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .experience-section h2 span {
+      color: #f39c12;
+    }
+    .experience-desc {
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 18px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    /* Experience Chart - Pie Chart */
+    #experienceChart {
+      max-width: 600px;
+      margin: 40px auto;
+      height: 400px;
+    }
+    /* Sticky Buttons */
+    .hire-button, .cv-button {
+      position: fixed;
+      right: 20px;
+      background: #f39c12;
+      color: #000;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .hire-button:hover, .cv-button:hover {
+      background: #e67e22;
+      transform: scale(1.1);
+    }
+    .hire-button {
+      bottom: 110px; /* Positioned above the CV button */
+    }
+    .cv-button {
+      bottom: 50px;
+    }
+    /* Footer */
+    .footer {
+      background-color: #111;
+      color: #f39c12;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 40px;
+      border-top: 2px solid #f39c12;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Abdullah's <span>Portfolio</span></a></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">My Profile</a></li>
+        <li><a href="education.html">My Education</a></li>
+        <li><a href="myskills.html">My Skills</a></li>
+        <li><a href="myexperience.html">My Experience</a></li>
+        <li><a href="myprojects.html">My Projects</a></li>
+    </ul>
+  </nav>
+  <!-- Experience Section -->
+  <section class="experience-section" id="experience">
+    <h2>My <span>Experience</span></h2>
+    <div class="experience-desc">
+      <p>Although I haven't yet worked in established software houses, I have completed numerous group projects and presentations with professors. These collaborative experiences have honed my communication skills and built a strong foundation in teamwork and technical execution.</p>
+      <p>My journey is at a beginner level, but every project has enriched my understanding of real-world challenges and the importance of collaboration. I am dedicated, eager to learn, and continuously striving to improve my skill set.</p>
+    </div>
+    <!-- Experience Pie Chart -->
+    <canvas id="experienceChart" width="600" height="400"></canvas>
+  </section>
+  <!-- Sticky Buttons -->
+  <a href="mailto:abdullahtariq110099@gmail.com?subject=Hire%20Me" class="hire-button" target="_blank">Hire Me</a>
+  <a href="portfolio_resources/abdullah tariq cv.pdf" class="cv-button" target="_blank">View CV</a>
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Abdullah Tariq | All Rights Reserved
+  </footer>
+  <script>
+    // Responsive navbar toggle
+    function toggleMenu() {
+      var nav = document.getElementById('navLinks');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+      }
+    }
+    // Chart for Experience Metrics - Pie Chart
+    const ctx = document.getElementById('experienceChart').getContext('2d');
+    const experienceChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Communication', 'Teamwork', 'Collaboration', 'Presentation Skills', 'Technical Execution'],
+        datasets: [{
+          label: 'Experience Distribution',
+          data: [85, 80, 78, 75, 70],
+          backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#FF9800', '#9C27B0']
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Projects - Abdullah's Portfolio</title>
+  <!-- Optional: Font (Poppins) -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f39c12' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'/></svg>">
+
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #1a1a1a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo a {
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: 0.3s;
+    }
+    .logo a span {
+      color: #f39c12;
+    }
+    .logo a:hover {
+      transform: scale(1.1);
+      color: #f39c12;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      color: #f39c12;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: #1a1a1a;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+    /* Projects Section */
+    .projects-section {
+      padding: 120px 20px 50px; /* extra top padding for fixed navbar */
+      text-align: center;
+    }
+    .projects-section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .projects-section h2 span {
+      color: #f39c12;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+    .project-card {
+      background: #1a1a1a;
+      border: 2px solid #f39c12;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+    }
+    /* Fix image size: all images will have a fixed height of 200px and cover the area */
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .project-card h3 {
+      font-size: 20px;
+      margin: 10px;
+      color: #f39c12;
+    }
+    .project-details {
+      display: none;
+      padding: 0 10px 10px;
+      text-align: left;
+      font-size: 16px;
+      color: #ddd;
+    }
+    /* Sticky Buttons */
+    .hire-button, .cv-button {
+      position: fixed;
+      right: 20px;
+      background: #f39c12;
+      color: #000;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .hire-button:hover, .cv-button:hover {
+      background: #e67e22;
+      transform: scale(1.1);
+    }
+    .hire-button {
+      bottom: 110px; /* Positioned above the CV button */
+    }
+    .cv-button {
+      bottom: 50px;
+    }
+    /* Footer */
+    .footer {
+      background-color: #111;
+      color: #f39c12;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 40px;
+      border-top: 2px solid #f39c12;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Abdullah's <span>Portfolio</span></a></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">My Profile</a></li>
+      <li><a href="education.html">My Education</a></li>
+      <li><a href="myskills.html">My Skills</a></li>
+      <li><a href="myexperience.html">My Experience</a></li>
+      <li><a href="myprojects.html">My Projects</a></li>
+    </ul>
+  </nav>
+  <!-- Projects Section -->
+  <section class="projects-section" id="projects">
+    <h2>My <span>Projects</span></h2>
+    <p style="max-width:800px; margin:20px auto; font-size:18px; line-height:1.8; text-align:justify;">
+      Although I have not yet worked in established software houses, I have completed several impressive group projects and presentations. These projects reflect my strong teamwork, communication, and technical skills. Click on any project below to view more details, including the marks I received and the core concepts used.
+    </p>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project1.PNG" alt="Student Management System">
+        <h3>Student Management System</h3>
+        <div class="project-details">
+          <p><strong>PF Project</strong></p>
+          <p>Student Management System using C++ (functions and control structures) - <em>9/10</em></p>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project 2.svg" alt="ICT Projects">
+        <h3>ICT Projects</h3>
+        <div class="project-details">
+          <p><strong>ICT Projects</strong></p>
+          <p>Various Word, Excel projects and PowerPoint presentations - <em>8/10</em></p>
+        </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project3.PNG" alt="Bank Management System">
+        <h3>Bank Management System</h3>
+        <div class="project-details">
+          <p><strong>OOP Project</strong></p>
+          <p>Bank Management System developed in C++ - <em>9/10</em></p>
+        </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project4.PNG" alt="Database Integration">
+        <h3>Database Integration</h3>
+        <div class="project-details">
+          <p><strong>Database Project</strong></p>
+          <p>Integration using XAMPP and C++ for creating tables, databases and executing queries - <em>8/10</em></p>
+        </div>
+      </div>
+      <!-- Project 5 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project 5.PNG" alt="Tic Tac Toe Game">
+        <h3>Tic Tac Toe Game</h3>
+        <div class="project-details">
+          <p><strong>DSA Lab Project</strong></p>
+          <p>Tic Tac Toe game developed using HTML, CSS, and JavaScript (concepts from C++) - <em>15/15</em></p>
+        </div>
+      </div>
+      <!-- Project 6 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project6.PNG" alt="AI Research Project">
+        <h3>AI Research Project</h3>
+        <div class="project-details">
+          <p><strong>AI Project</strong></p>
+          <p>Research on AI models and techniques - <em>9/10</em></p>
+        </div>
+      </div>
+      <!-- Project 8 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project7.PNG" alt="Networking & Security">
+        <h3>Networking & Security</h3>
+        <div class="project-details">
+          <p><strong>CN & IS Project</strong></p>
+          <p>Establishing LAN connections and tracing packets using Wireshark, ethical hacking techniques, and encryption algorithms - <em>8/10</em></p>
+        </div>
+      </div>
+      <!-- Project 9 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project8.PNG" alt="Institute clone website">
+        <h3>Software Engineering</h3>
+        <div class="project-details">
+          <p><strong>Institute clone project</strong></p>
+          <p>Establishing clone of institute website not top level but as passion I hardwork to complete it. - <em>8/10</em></p>
+        </div>
+      </div>
+      <!-- Project 10 -->
+      <div class="project-card" onclick="toggleProjectDetails(this)">
+        <img src="portfolio_resources/project9.PNG" alt="My Own Portfolio">
+        <h3>FRONTEND PROJECT</h3>
+        <div class="project-details">
+          <p><strong></strong></p>
+          <p>In this portfolio, I implemented responsive design, dynamic charts with Chart.js, and interactive UI elements using HTML, CSS, and JavaScript. - <em>8/10</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Sticky Buttons -->
+  <a href="mailto:abdullahtariq110099@gmail.com?subject=Hire%20Me" class="hire-button" target="_blank">Hire Me</a>
+  <a href="portfolio_resources/abdullah tariq cv.pdf" class="cv-button" target="_blank">View CV</a>
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Abdullah Tariq | All Rights Reserved
+  </footer>
+  <script>
+    // Responsive navbar toggle
+    function toggleMenu() {
+      var nav = document.getElementById('navLinks');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+      }
+    }
+    // Toggle project details on click
+    function toggleProjectDetails(element) {
+      var details = element.querySelector('.project-details');
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

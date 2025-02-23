@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Education</title>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f39c12' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'/></svg>">
+
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212; /* Dark Background */
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #1a1a1a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo a {
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: 0.3s;
+    }
+    .logo a span {
+      color: #f39c12;
+    }
+    .logo a:hover {
+      transform: scale(1.1);
+      color: #f39c12;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      color: #f39c12;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: #1a1a1a;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+    /* Education Section */
+    .education {
+      text-align: center;
+      padding: 120px 20px 50px; /* extra top padding for fixed navbar */
+    }
+    .education h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .education h1 span {
+      color: #f39c12;
+    }
+    .education-box {
+      background: #1a1a1a;
+      padding: 20px;
+      border-left: 5px solid #f39c12;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    .education-box h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #f39c12;
+    }
+    .education-box p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    /* Sticky CV Button */
+    .cv-button {
+      position: fixed;
+      right: 20px;
+      bottom: 50px;
+      background: #f39c12;
+      color: black;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .cv-button:hover {
+      background: #e67e22;
+      transform: scale(1.1);
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .education h1 {
+        font-size: 28px;
+      }
+      .education-box h2 {
+        font-size: 24px;
+      }
+      .education-box p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Abdullah's <span>Portfolio</span></a></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">My Profile</a></li>
+      <li><a href="education.html">My Education</a></li>
+      <li><a href="myskills.html">My Skills</a></li>
+      <li><a href="myexperience.html">My Experience</a></li>
+      <li><a href="myprojects.html">My Projects</a></li>
+    </ul>
+  </nav>
+  <!-- Education Section -->
+  <section class="education">
+    <h1>My <span>Education</span></h1>
+    <div class="education-box">
+      <h2>Matriculation</h2>
+      <p>Sir Syed Pilot High School, Wazirabad</p>
+      <p>Marks: 1051 / 1100 (A+)</p>
+    </div>
+    <div class="education-box">
+      <h2>Intermediate</h2>
+      <p>Punjab College, Wazirabad</p>
+      <p>Marks: 891 / 1100 (A+)</p>
+    </div>
+    <div class="education-box">
+      <h2>Bachelor’s Degree</h2>
+      <p>University of Sialkot</p>
+      <p>BS Computer Science</p>
+      <p>CGPA: 3.64 (In 3 Semesters)</p>
+    </div>
+  </section>
+  <!-- Sticky CV Button -->
+  <a href="portfolio_resources/abdullah tariq cv.pdf" class="cv-button" target="_blank">View CV</a>
+  <script>
+    function toggleMenu() {
+      var nav = document.getElementById("navLinks");
+      if (nav.style.display === "flex") {
+        nav.style.display = "none";
+      } else {
+        nav.style.display = "flex";
+        nav.style.flexDirection = "column";
+      }
+    }
+  </script>
+</body>
+</html>
