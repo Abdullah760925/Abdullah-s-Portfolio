@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdullah's Portfolio</title>
+  <script defer src="script.js"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23f39c12' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'/></svg>">
+
+  <style>
+   
 /* General Styling */
 * {
   margin: 0;
@@ -213,3 +224,84 @@ a {
   background: #f39c12;
   color: black;
 }
+
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Abdullah's <span>Portfolio</span></a></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">My Profile</a></li>
+      <li><a href="education.html">My Education</a></li>
+      <li><a href="myskills.html">My Skills</a></li>
+      <li><a href="myexperience.html">My Experience</a></li>
+      <li><a href="myprojects.html">My Projects</a></li>
+      <li class="contact">
+        <a href="#" onclick="toggleContact(event)">Contact Me</a>
+        <div class="dropdown" id="contactDropdown">
+          <a href="tel:03106307282">📞 03106307282</a>
+          <a href="mailto:abdullahtariq110099@gmail.com">✉️ Email Me</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- My Profile Section -->
+  <section class="profile" id="profile">
+    <div class="profile-container">
+      <div class="profile-img">
+        <img src="portfolio_resources/abdullah.jpg" alt="Abdullah Tariq">
+      </div>
+      <div class="profile-info">
+        <h1>I'm <span>Abdullah Tariq</span></h1>
+        <p>
+          A passionate <span class="highlight">Computer Science student</span> specializing in 
+          <strong>C++</strong>, <strong>Python</strong>, <strong>Web Development</strong>, and <strong>SQL</strong>.
+          I create <span class="highlight">Professional, Clean, and Efficient</span> coding solutions and designs.
+          Seeking <span class="highlight">opportunities</span> to learn, grow, and contribute to exciting projects!
+        </p>
+        <div class="buttons">
+          <a href="mailto:abdullahtariq110099@gmail.com?subject=Hire%20Me" class="btn hire-btn">Hire Me</a>
+          <a href="portfolio_resources/abdullah tariq cv.pdf" class="btn cv-btn" target="_blank">View CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Personal Info Section -->
+  <section class="personal-info">
+    <h2>Personal Information</h2>
+    <table class="info-table">
+      <tr><td><strong>Name:</strong></td><td>Abdullah Tariq</td></tr>
+      <tr><td><strong>Father's Name:</strong></td><td>Muhammad Tariq</td></tr>
+      <tr><td><strong>CNIC:</strong></td><td>34104-9084217-7</td></tr>
+      <tr><td><strong>Age:</strong></td><td>20</td></tr>
+      <tr><td><strong>Location:</strong></td><td>Wazirabad, Punjab, Pakistan</td></tr>
+      <tr><td><strong>Phone:</strong></td><td><a href="tel:03106307282">0310-6307282</a></td></tr>
+      <tr><td><strong>Email:</strong></td><td><a href="mailto:abdullahtariq110099@gmail.com">abdullahtariq110099@gmail.com</a></td></tr>
+      <tr><td><strong>University:</strong></td><td>University of Sialkot</td></tr>
+      <tr><td><strong>Languages:</strong></td><td>Urdu, English</td></tr>
+    </table>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 | Made with ❤️ by Abdullah Tariq</p>
+  </footer>
+  <script>
+    function toggleContact(event) {
+      event.stopPropagation();
+      let dropdown = document.getElementById("contactDropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+    function toggleMenu() {
+      var nav = document.getElementById("navLinks");
+      if (nav.style.display === "flex") {
+        nav.style.display = "none";
+      } else {
+        nav.style.display = "flex";
+        nav.style.flexDirection = "column";
+      }
+    }
+  </script>
+</body>
+</html>
